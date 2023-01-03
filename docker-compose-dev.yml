@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: dockerfile.dev
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/app
+  productdb:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - product-data:/data/db
+volumes:
+  product-data:
